@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-3 edit-h1">Inscription</h1>
+
+    <div class="container text-primary">
+        {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{form_row(registrationForm.pseudo, {
+            label: "Pseudo :",
+            attr: {
+                placeholder:"pseudo"
+            }
+        })}}
+        {{form_row(registrationForm.nom, {
+            label: "Nom :",
+            attr: {
+                placeholder:"nom"
+            }
+        })}}
+        {{form_row(registrationForm.prenom, {
+            label: "Prenom :",
+            attr: {
+                placeholder:"prenom"
+            }
+        })}}
+        {{form_row(registrationForm.email, {
+            label: "Email :",
+            attr: {
+                placeholder:"email"
+            }
+        })}}
+        {{form_row(registrationForm.civilite)}}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password :'
+            }) }}
+
+        <div class="text-center"><button type="submit" class="btn btn-outline-primary  text-light">Register</button></div>
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-4 edit-h1">Votre Panier</h1>
+        {% if items %}
+            <table class="table table-striped-columns mt-5 table-dark text-dark"  >
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Photo</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{ item.produit.titre }}</td>
+                            <td class="text-center"><img src="{{ asset('images/produits/' ~  item.produit.photo )}}" alt="" width="50" height="50"></td>
+                            <td>{{ item.produit.prix }}</td>
+                            <td>{{ item.quantite }}</td>
+                            <td>{{ item.quantite * item.produit.prix }}€</td>
+                            <td> <a href=" {{ path('cart_remove', {id: item.produit.id}) }} " class="btn btn-sm  btn-danger rounded-2">X</a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h5 class="text-center bg-light text-dark">Total: {{ total }}€</h5>
+        {% else %}
+            <p class="text-light text-center">Votre panier est Vide</p>
+        {% endif %}
+         {% if app.user %}
+            <div class="text-center">
+            <a href="{{ path('cart_commande') }}" class="btn btn-outline-primary">Passer la commande</a>
+            </div>
+         {% endif %}
+         
+
+    </div>
+{% endblock %}

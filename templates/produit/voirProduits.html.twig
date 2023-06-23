@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits!{% endblock %}
+
+{# {% block body %}
+
+    <h1 class="text-center edit-h1 my-3">Produits</h1>
+
+		<section class="articles">
+
+			{% for item in produits %}
+
+
+				<div class="col-md-3 mt-3 px-2 ">
+					<div class="card text-center bg-primary border border-light border-3 p-3">
+						<img src="{{ asset('images/produits/' ~  item.photo )}}" alt="" width="270" height="270">
+						<div class="card-body text-dark text-center">
+							<h5 class="card-title fw-bold">Titre: {{item.titre}}</h5><hr>
+							<div class="container text-light text-end"><h5> {{item.prix}}€</h5></div>
+                            <a href="{{ path('app_produit_show', {id: item.id}) }}" class="btn btn-dark rounded-3">Voir</a>
+                            <a href="{{ path('cart_add', {id: item.id}) }}" class="btn btn-dark rounded-3">Ajouter au Panier</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+
+
+{% endblock %}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %} #}
+
+{% block body %}
+
+    <section> 
+
+        <h1 class="text-center m-5 edit-h1">Tout nos Produits</h1>
+
+            <div class="card-container d-flex flex-wrap">
+            {% for item in produits %}
+
+                <div class="card-body p-5 bg-dark border border-light rounded m-5 text-white">
+                    <h2 class="card-title text-center">
+                        {{item.titre}} {{item.couleur}}</h2>
+                    <img class="p-3" src="{{ asset('images/produits/' ~  item.photo )}}" alt="T-shirt" width="350">
+                    <h5 class="card-title pt-2">
+                        Description :
+                        {{item.description | raw()}}</h5>
+                    <h5 class="card-title">Couleur :
+                        {{item.couleur}}</h5>
+                    <h5 class="card-title">Taille :
+                        {{item.taille}}</h5>
+                    <h5 class="card-title">Collection :
+                        {{item.collection}}</h5>
+                    <h5 class="metadata pb-5">Ajouté le :
+                        {{item.dateEnregistrement|date('m/d/Y')}}</h5>
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title">Stock :
+                            {{item.stock}}</h5>
+                        <h5 class="card-title">Prix :
+                            {{item.prix}} €</h5>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ path('app_produit_show', {id: item.id}) }}" class="btn btn-dark rounded-3">Voir</a>
+                            <a href="{{ path('cart_add', {id: item.id}) }}" class="btn btn-dark rounded-3">Ajouter au Panier</a>
+                    </div>
+
+
+                </div>
+
+
+        {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
