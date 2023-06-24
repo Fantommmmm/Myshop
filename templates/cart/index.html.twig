@@ -34,7 +34,8 @@
         {% else %}
             <p class="text-light text-center">Votre panier est Vide</p>
         {% endif %}
-         {% if app.user %}
+         {% if app.user %} 
+         
             <div class="text-center">
             <a href="{{ path('cart_commande') }}" class="btn btn-outline-primary">Passer la commande</a>
             </div>

@@ -93,12 +93,13 @@ class CartService
         return $total;
     }
 
-    public function clearCart()
-{
-    $session = $this->rs->getSession();
-    $session->remove('cart');
-    $session->remove('qt');
-}
+        public function clearCart()
+    {
+        $session = $this->rs->getSession();
+        $session->remove('cart');
+        $session->remove('qt');
+    }
+
 
 
 }

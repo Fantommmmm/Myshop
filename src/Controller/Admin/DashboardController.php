@@ -52,7 +52,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Vetements', 'fas fa-clothes-hanger', Produit::class),
             MenuItem::linkToCrud('Commande', 'fas fa-clothes-hanger', Commande::class),
             MenuItem::section('Retour au site'),
-            MenuItem::linkToRoute('Accueil du site', 'fa fa-igloo', 'app_produit_index')
+            MenuItem::linkToRoute('Accueil du site', 'fa fa-igloo', 'produits')
         ];
     }
 }

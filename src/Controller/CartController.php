@@ -83,7 +83,7 @@ public function cartCommande(EntityManagerInterface $manager, Request $request, 
 
     $cs->clearCart();
 
-    return $this->redirectToRoute('cart_commandes_user');
+    return $this->redirectToRoute('commandes_user');
 }
 
 
@@ -106,17 +106,18 @@ public function deleteCommande(EntityManagerInterface $manager, Commande $comman
     $manager->persist($produit);
     $manager->flush();
 
-    return $this->redirectToRoute('cart_commandes_user');
+    return $this->redirectToRoute('commandes_user');
 }
 
 #[Route('/cart/commandes', name: 'commandes_user')]
-public function afficherCommandesUtilisateur(): Response
+public function afficherCommandesUtilisateur(CartService $cs): Response
 {
     $user = $this->getUser();
     $commandes = $user->getCommandes();
+    
 
     return $this->render('commandes/index.html.twig', [
-        'commandes' => $commandes,
+        'commandess' => $commandes,
     ]);
 }
 

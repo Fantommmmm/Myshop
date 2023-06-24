@@ -48,14 +48,16 @@
 									</span>
                                     {% endif %}
 								</a>						
-							
-    {% if app.user %}
-                                
+							{% if app.user and is_granted('ROLE_ADMIN') %}
+              			<a href="{{ path('admin') }}" class="btn btn-dark border border-primary border-2 text-primary ms-2">EasyAdmin</a>
+              {% endif %}
+              
+    {% if app.user %}                       
 			<a href="{{ path('app_logout') }}" class="btn btn-dark border border-primary border-2 text-primary ms-2">Déconnexion</a>
-	{% else %}
+	  {% else %}
 	        <a href="{{ path('app_login') }}" class="btn btn-dark text-warning border border-1 border-warning ms-2">Connexion</a>
 	        <a href="{{ path('app_register') }}" class="btn btn-dark text-info border border-1 border-info ms-2">Inscription</a>
-	{% endif %}
+	  {% endif %}
     </div>
   </div>
 </nav>
